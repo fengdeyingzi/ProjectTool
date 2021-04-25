@@ -13,7 +13,6 @@ import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -92,6 +91,7 @@ public class GradleReplace extends JFrame {
 					temp = FileUtils.read(new File(file,"build.gradle"), "UTF-8");
 				
 				int index = temp.indexOf("\'com.android.tools.build:gradle");
+				if(index<0) index = temp.indexOf("\"com.android.tools.build:gradle");
 				StringBuffer buffer = new StringBuffer();
 				if(index>0){
 					buffer.append(temp.substring(0,index)); //不包含引号
